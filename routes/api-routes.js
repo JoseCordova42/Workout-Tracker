@@ -6,7 +6,7 @@ router.get("/api/workouts", function (req, res) {
         // .find({})
         .aggregate([{
             $addFields: {
-                totalDuration: { $sum: "$duration" }
+                totalDuration: { $sum: "$exercises.duration" }
             }
         }])
         .then(function (dbWorkouts) {
